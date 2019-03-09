@@ -2,6 +2,9 @@
 \pagestyle{headings}
 \usepackage{hyperref}
 \usepackage{listings}
+\lstset{language=bash}
+\lstset{numbers=right}
+\lstset{breaklines}
 \title{Lab Report for Software Engineering course \newline
  Lab 1: Git \& Dev Cloud}
 \author{Wang, Chen \\ 16307110064 \\ School of Software\\ Fudan University}
@@ -78,9 +81,9 @@ Git was designed as a set of programs written in C and several shell scripts tha
 \subsubsection{Pluggable merge strategies}
 As part of its toolkit design, Git has a well-defined model of an incomplete merge, and it has multiple algorithms for completing it, culminating in telling the user that it is unable to complete the merge automatically and that manual editing is needed.
 \subsubsection{Garbage accumulates until collected}
-Aborting operations or backing out changes will leave useless dangling objects in the database. These are generally a small fraction of the continuously growing history of wanted objects. Git will automatically perform garbage collection when enough loose objects have been created in the repository. Garbage collection can be called explicitly using git gc --prune.
+Aborting operations or backing out changes will leave useless dangling objects in the database. These are generally a small fraction of the continuously growing history of wanted objects. Git will automatically perform garbage collection when enough loose objects have been created in the repository. Garbage collection can be called explicitly using \lstinline !git gc --prune! .
 \subsubsection{Periodic explicit object packing}
-Git stores each newly created object as a separate file. Although individually compressed, this takes a great deal of space and is inefficient. This is solved by the use of packs that store a large number of objects delta-compressed among themselves in one file (or network byte stream) called a packfile. Packs are compressed using the heuristic that files with the same name are probably similar, but do not depend on it for correctness. A corresponding index file is created for each packfile, telling the offset of each object in the packfile. Newly created objects (with newly added history) are still stored as single objects, and periodic repacking is needed to maintain space efficiency. The process of packing the repository can be very computationally costly. By allowing objects to exist in the repository in a loose but quickly generated format, Git allows the costly pack operation to be deferred until later, when time matters less, e.g., the end of a work day. Git does periodic repacking automatically, but manual repacking is also possible with the git gc command. For data integrity, both the packfile and its index have an SHA-1 checksum inside, and the file name of the packfile also contains an SHA-1 checksum. To check the integrity of a repository, run the git fsck command.
+Git stores each newly created object as a separate file. Although individually compressed, this takes a great deal of space and is inefficient. This is solved by the use of packs that store a large number of objects delta-compressed among themselves in one file (or network byte stream) called a packfile. Packs are compressed using the heuristic that files with the same name are probably similar, but do not depend on it for correctness. A corresponding index file is created for each packfile, telling the offset of each object in the packfile. Newly created objects (with newly added history) are still stored as single objects, and periodic repacking is needed to maintain space efficiency. The process of packing the repository can be very computationally costly. By allowing objects to exist in the repository in a loose but quickly generated format, Git allows the costly pack operation to be deferred until later, when time matters less, e.g., the end of a work day. Git does periodic repacking automatically, but manual repacking is also possible with the \lstinline !git gc! command. For data integrity, both the packfile and its index have an SHA-1 checksum inside, and the file name of the packfile also contains an SHA-1 checksum. To check the integrity of a repository, run the \lstinline!git fsck! command.
 \subsection{The application of Git}
 
 Git is a distributed version-control system for tracking changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its goals include speed, data integrity, and support for distributed, non-linear workflows.
@@ -93,7 +96,7 @@ Git is free and open-source software distributed under the terms of the GNU Gene
 \paragraph{git init}
 This command turns a directory into an empty Git repository. This is the first step in creating a repository. After running git init, adding and committing files/directories is possible.
 Usage:
-\lstset{numbers=right}
+
 
 \begin{lstlisting}[language=bash]
 # change directory to codebase
@@ -128,7 +131,7 @@ $ git status
 
 \paragraph{git config}
 With Git, there are many configurations and settings possible. \emph{git config} is how to assign these settings. Two important settings are user user.name and user.email. These values set what email address and name commits will be from on a local computer. With \emph{git config}, a \emph{--global} flag is used to write the settings to all repositories on a computer. Without a \emph{--global} flag settings will only apply to the current repository that you are currently in.
-There are many other variables available to edit in \emph{git config}. From editing color outputs to changing the behavior of \emph{git status}. 
+There are many other variables available to edit in \emph{git config}. From editing color outputs to changing the behavior of \emph{git status}.
 Usage:
 \begin{lstlisting}[language=bash]
 $ git config <setting> <command>
@@ -205,10 +208,46 @@ $ git push -all
 \end{lstlisting}
 
 \subsection{The usage of Git in this lab}
-AAAW
+In this lab, we are going to utilize Git to get and modify the code created by the teaching assistant, upload them to the server and then finish other consequent operations. Therefore, the critical steps in our lab include
+\begin{enumerate}
+  \item Clone the code from the Huawei cloud repository;
+  \item Commit our changes to the Git system;
+  \item Push our commit onto the Huawei cloud repository.
+\end{enumerate}
+\subsubsection{Clone}
+To check out the code from the repository on the Huawei Cloud platform, we ought to navigate to \url{classroom.devcloud.huaweicloud.com}, login via IAM method, enter the project and navigate to the code management section. The Lab1 section is shown in the list allowing us to clone/download the repository from the cloud. As we select the "via HTTPS" method, we get a link enabling us to clone the code from the Git console. 
+After getting the link, we can clone the code by entering the following the command below: 
+\begin{lstlisting}[language=bash]
+git clone https://codehub.devcloud.huaweicloud.com/2019rjgc_Lab1_xzstudent00300001/Lab1.git
+\end{lstlisting}
+\par
+After cloning the repository without specifying the path to save the contents, we will get the downloaded files in the user folder by default.
+\subsubsection{Commit}
+After changing the source code, we can view the changes we have made by using the \textbf{git status} command in the git root folder. The changes will be displayed in the command line window. As we confirm the changes we have made, we can commit the changes by input the \textbf{git commit} command to commit the changes. It should be noted that the commit message is required for each commit we have made. A commit successful message will be shown after a successful commit.
+\subsubsection{Push}
+After committing the specified codes into the local repository, we can push the commits into the cloud repository. If we have made multiple commits, they will be pushed to the cloud in the single push command.
+\par
+Since we have specified the remote repositories where we pulled the codes from, we will be free from entering the remote address of the repository again. A single \textbf{git push} command will be able to instruct the git system to push all the commits to the remote repository at the Huawei Cloud.
 \section{Java EE}
 \subsection{The needs and application of Java EE}
+Java Platform, Enterprise Edition (Java EE) is the standard in community-driven enterprise software. Java EE is developed using the Java Community Process, with contributions from industry experts, commercial and open source organizations, Java User Groups, and countless individuals. Each release integrates new features that align with industry needs, improves application portability, and increases developer productivity.
+\par
+Today, Java EE offers a rich enterprise software platform and with over 20 compliant Java EE implementations to choose from.
+\par
+As stated above, the Java EE platform is designed to help developers create large-scale, multitiered, scalable, reliable, and secure network applications. A shorthand name for such applications is enterprise applications, so called because these applications are designed to solve the problems encountered by large enterprises. Enterprise applications are not only useful for large corporations, agencies, and governments, however. The benefits of an enterprise application are helpful, even essential, for individual developers and small organizations in an increasingly networked world.
+\par
+The features that make enterprise applications powerful, like security and reliability, often make these applications complex. The Java EE platform reduces the complexity of enterprise application development by providing a development model, API, and runtime environment that allow developers to concentrate on functionality.
 \subsection{Common frameworks of Java EE}
+According to some online materials, I have discovered that there are a list of Spring framework that are most commonly used by enterprises across the world. Ordered by popularity, these frameworks are:
+\begin{enumerate}
+  \item \textbf{Spring MVC.} Old but gold, Spring MVC is still ahead of the curve after more than a decade since its first release. After its expansion to embrace complete MVC framework, Spring kept on evolving adopting changes and turned into a full-scale Java framework for Internet-facing applications, offering software engineers a powerful toolkit for web application development and application configuration as well as for security projects.
+  \item \textbf{Struts 2.} To elaborate even more on existing Java frameworks that are widely used by modern software engineers, we decided to refer to the successor of Apache’s Struts 1, Struts 2. This Java framework is quite a find for engineers who work with building contemporary Java EE web apps.
+  \item \textbf{Hibernate.} Although not on RebelLabs’ list either, it is worth mentioning Hibernate when debating the best Java framework. This mapping Java framework cracks object-relational impedance mismatch issues by substituting persisting DB accesses high-level object handling functions.
+  \item \textbf{JSF.} Being a part of Java EE, JavaServer Faces is supported by Oracle. Although this one is not the best frameworks for speedy Java development, it is easy to utilize because of great documentation provided by Oracle.
+  \item \textbf{Vaadin.} Using GWT for rendering the end web page, Vaadin became one of the uber popular frameworks modern developers choose when creating applications for business. Utilizing a well-known component-based approach, Vaadin takes the burden off developer’s shoulder by communicating the changes made to the browser.
+  \item \textbf{Google Web Toolkit.} GWT is an another free Java framework allowing coders to create and optimize sophisticated web-based apps.
+  \item \textbf{Grails.} This particular web framework is regarded as a dynamic tool enhancing engineers’ productivity due to its opinionated APIs, sensible defaults, as well as its convention-over-configuration paradigm. Seamless Java integration makes this particular framework one of the top choices for plenty of programmers worldwide.
+\end{enumerate}
 \section{Spring Boot}
 \subsection{The feature of Spring Boot in comparison to other Java EE frameworks}
 \subsection{The usage of Spring Boot in this lab}
