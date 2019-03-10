@@ -311,15 +311,106 @@ git clone https://codehub.devcloud.huaweicloud.com/2019rjgc_Lab1_xzstudent003000
 \end{lstlisting}
 \begin{figure}
   \centering
-  \includegraphics[width=12cm]{Figures/Cloned}
+  \includegraphics[width=12cm]{Figures/Cloned.png}
   \caption{Clone the repository to the local machine}\label{1}
 \end{figure}
 After cloning the repository without specifying the path to save the contents, we will get the downloaded files in the user folder by default. The cloned files are like the figure shown in (Figure \ref{1})
 \subsubsection{Modify the source code}
-There are two places that we need to modify the source code. In the file \emph{\textbackslash src\textbackslash main\textbackslash java\textbackslash fudan\textbackslash se\textbackslash lab1\textbackslash Lab1Application.java}, I need to modify the String to \emph{``Hello, Name: Wang Chen, Id: 16307110064''}; and in the file
+There are two places that we need to modify the source code. In the file \emph{\textbackslash src\textbackslash main\textbackslash java\textbackslash fudan\textbackslash se\textbackslash lab1\textbackslash Lab1Application.java}, I need to modify the String to \emph{``Hello, Name: Wang Chen, Id: 16307110064''}; and in the file \emph{\textbackslash src\textbackslash main \textbackslash resources\textbackslash application.properties}, here we need to modify the port number to the specified number. The modified files are shown as the following pictures Figure \ref{2} and Figure \ref{3}.
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{Figures/Source.png}
+  \caption{Changes of the string}\label{2}
+\end{figure}
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{Figures/Capture3.png}
+  \caption{Changes of the port number}\label{3}
+\end{figure}
+\subsubsection{View repository status}
+After I have modified the codes, I should navigate to the repository folder and view the status of the repository. In the bash shell terminal, I input the commands \emph{cd Lab1} and \emph{git status} specifically. Then the modified file is shown in red color. In the screenshot commit operation, I only changed the first file, leaving the next file's change to the next commit. The status of this change is shown in the Figure \ref{4} below.
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{Figures/Capture1.png}
+  \caption{Status of the git folder}\label{4}
+\end{figure}
+\subsubsection{Commit changes}
+The command \emph{git add .} under the working folder adds the changes to the local cache area of the Git. Afterwards, the \emph{git commit . -m ``~commit message''} command will commit the changes, where the commit message is specified to be \emph{``update name and id''}. The commit result is shown as the Figure \ref{5} below.
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{Figures/Capture2.png}
+  \caption{Result of the \emph{git commit} command}\label{5}
+\end{figure}
+\subsubsection{Push commits}
+As we finish making changes and committing them, we can use the \emph{git push} command to push the changes to the remote repository. The result of the \emph{push} command is shown as the Figure \ref{6} below.
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{Figures/Capture5.png}
+  \caption{Result of the \emph{git push} command}\label{6}
+\end{figure}
 \section{Spring Boot framework construction}
-
+Going back to the Dev Cloud workstation console, we can deploy the project we have just finished editing. Selecting the Build release section and the compile construction subsection, we can create a new task with our student ID and name being the name of the task. Then we need to select the source code from the code management repository and the master branch. After selecting the \emph{Maven Template} option, we can create a new task. As we finish the deploy process, we can see a \emph{Finished Success} prompt, indicating that the deploy process is finished. The result of my deploy is shown in the Figure \ref{7} above.
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{Figures/Screenshot(33).png}
+  \caption{Result of the first deploy process}\label{7}
+\end{figure}
 \section{Executions on the Spring Boot framework}
-
+\subsection{Create a new task}
+We should create a new task and name the task with our student ID and name. In the next step, we should choose the Spring Boot deployment and go down to the next step.
+\subsection{Adjust the deploy sequence}
+We should drag the ``Stop Spring Boot service'' to the end of the list and remove the ``URL health test'' method. After removing, we ought to add a new service called ``Pending execution'' between ``Start Spring Boot Service'' and ``Stop Spring Boot Service''. The result of the adjusted deploy sequence is shown as the Figure \ref{8} below.
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{Figures/Screenshot(34).png}
+  \caption{Result of the adjusted deploy sequence}\label{8}
+\end{figure}
+\subsection{Configure and install the JDK}
+We should create a machine group in the configuring JDK part and create a new host according to the given information. Then we can install the JDK at \emph{/usr/local/jdk}.
+\subsection{Choose deployment origin}
+In the choosing deployment origin section, we can select the host we have just created and the task we have deployed in the previous part, downloading it to the \emph{/usr/local} path. The result of the configured deployment origin is shown as the Figure \ref{9} below.
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{Figures/Capture6.png}
+  \caption{Result of the adjusted deploy sequence}\label{9}
+\end{figure}
+\subsection{Configure startup service}
+In the ``Start Spring Boot Service'' section, we should configure the start-up service at the absolute path \emph{/usr/local/lab1-0.0.1-SNAPSHOT.jar} and configure as the information given. The host should be the one we have created in the previous subsection. The result of the configured startup service is shown as the Figure \ref{10} below.
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{Figures/Capture7.png}
+  \caption{Result of the configured startup service}\label{10}
+\end{figure}
+\subsection{Configure pending execution}
+In the ``Configure pending execution'' section, we should create a 200 second pending time for us to visit our service. The result of the configured pending execution is shown as the Figure \ref{11} below.
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{Figures/Capture8.png}
+  \caption{Result of the configured pending execution}\label{11}
+\end{figure}
+\subsection{Configure stopping service}
+In the ``Configure stopping service'' section, we should configure the stop service at the absolute path \emph{/usr/local/lab1-0.0.1-SNAPSHOT.jar} and configure as the information given. The host should be the one we have created in the previous subsection. The result of the configured stop service is shown as the Figure \ref{12} below.
+\par
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{Figures/Capture9.png}
+  \caption{Result of the configured startup service}\label{12}
+\end{figure}
+\par
+\subsection{Start deployment}
+As we choose to save and start the deployment process, we can observe the process of our project being deployed on the Huawei Dev Cloud.  The result of the start deployment process is shown as the Figure \ref{13} below.
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{Figures/Capture10.png}
+  \caption{Result of the start deployment process}\label{13}
+\end{figure}
+\subsection{Test the deployed application}
+While our service is running, we can visit our service by the host IP address and the port number. The result of the test deployed application part is shown as the Figure \ref{14} below.
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{Figures/Capture11.png}
+  \caption{Result of the test deployed application}\label{14}
+\end{figure}
 \chapter{Conclusion}
+
 \end{document} 
