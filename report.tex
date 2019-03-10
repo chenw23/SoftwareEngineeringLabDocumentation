@@ -264,22 +264,30 @@ Specifically, Spring Boot has the following features:
   \item Absolutely no code generation and no requirement for XML configuration.
 \end{enumerate}
 \subsection{The usage of Spring Boot in this lab}
-
+The main part of the project is based on the Spring Boot framework. In the framework, we have reset the Spring Application run class to be Lab1Applacation, then the controller of the Spring Boot Application is reset to Hello Controller class, whose mapping is requested at ``/Hello''. The index method under the Hello Controller class is quite simple, returning a String showing the name and student ID, which each student should change to their own information.
+\par
+In addition to these properties, the Spring Boot application should specify a assigned port number, indicating that it will not run on the default port. The reason for this is that a couple of students are running their applications on the same server, who has a unique IP address. However, if all of them use the same port number, part of them won't be able to start the service due to port resource conflict. Assigning each student a unique port number enables them to start the service concurrently.
 \section{Classroom platform of Huawei Cloud}
 \subsection{The functionalities of Huawei Cloud}
+
 \subsection{The functions of Huawei Cloud used in this lab}
 \section{Life cycle in software engineering}
 \subsection{The meaning of life cycle in software engineering}
+The systems development life cycle (SDLC), also referred to as the application development life-cycle, is a term used in systems engineering, information systems and software engineering to describe a process for planning, creating, testing, and deploying an information system. The systems development life cycle concept applies to a range of hardware and software configurations, as a system can be composed of hardware only, software only, or a combination of both. There are usually six stages in this cycle: analysis, design, development and testing, implementation, documentation, and evaluation.
+\par
+A systems development life cycle is composed of a number of clearly defined and distinct work phases which are used by systems engineers and systems developers to plan for, design, build, test, and deliver information systems. Like anything that is manufactured on an assembly line, an SDLC aims to produce high-quality systems that meet or exceed customer expectations, based on customer requirements, by delivering systems which move through each clearly defined phase, within scheduled time frames and cost estimates. Computer systems are complex and often (especially with the recent rise of service-oriented architecture) link multiple traditional systems potentially supplied by different software vendors. To manage this level of complexity, a number of SDLC models or methodologies have been created, such as waterfall, spiral, Agile software development, rapid prototyping, incremental, and synchronize and stabilize.
+\par
+SDLC can be described along a spectrum of agile to iterative to sequential methodologies. Agile methodologies, such as XP and Scrum, focus on lightweight processes which allow for rapid changes (without necessarily following the pattern of SDLC approach) along the development cycle. Iterative methodologies, such as Rational Unified Process and dynamic systems development method, focus on limited project scope and expanding or improving products by multiple iterations. Sequential or big-design-up-front (BDUF) models, such as waterfall, focus on complete and correct planning to guide large projects and risks to successful and predictable results. Other models, such as anamorphic development, tend to focus on a form of development that is guided by project scope and adaptive iterations of feature development.
 \subsection{The life cycle displayed in this lab}
-AAAW
+
 \chapter{Specification of the Lab}
 \section{Platform of the operation}
 \section{Guideline of the operation steps}
 \section{Hand in method and materials}
 \chapter{Steps of accomplishing this Lab}
 \section{Git operations}
-\section{SpringBoot framework construction}
-\section{Executions on the SpringBoot framework}
+\section{Spring Boot framework construction}
+\section{Executions on the Spring Boot framework}
 \chapter{Significance of different parts of the lab}
 \chapter{Conclusion}
 \end{document} 
