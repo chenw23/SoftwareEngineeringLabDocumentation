@@ -2,6 +2,7 @@
 \pagestyle{headings}
 \usepackage{hyperref}
 \usepackage{listings}
+\usepackage{graphicx}
 \lstset{language=bash}
 \lstset{numbers=right}
 \lstset{breaklines}
@@ -286,15 +287,39 @@ A systems development life cycle is composed of a number of clearly defined and 
 \par
 SDLC can be described along a spectrum of agile to iterative to sequential methodologies. Agile methodologies, such as XP and Scrum, focus on lightweight processes which allow for rapid changes (without necessarily following the pattern of SDLC approach) along the development cycle. Iterative methodologies, such as Rational Unified Process and dynamic systems development method, focus on limited project scope and expanding or improving products by multiple iterations. Sequential or big-design-up-front (BDUF) models, such as waterfall, focus on complete and correct planning to guide large projects and risks to successful and predictable results. Other models, such as anamorphic development, tend to focus on a form of development that is guided by project scope and adaptive iterations of feature development.
 \subsection{The life cycle displayed in this lab}
-
-\chapter{Specification of the Lab}
-\section{Platform of the operation}
-\section{Guideline of the operation steps}
-\section{Hand in method and materials}
+In this lab, we can see the full period of the life cycle in a project in software engineering. Specifically, the steps are displayed in the following ways:
+\begin{enumerate}
+  \item \textbf{Planning.} The platform to place the codes and accomplish the management work, the framework to accomplish the back end and the front end of the server, the server system environment, the displaying user interface and the way to hand in the works are already worked out by the teaching assistants.
+  \item \textbf{Analysis.} The teaching assistants should consider how long the time limit should be given to the students, how detailed the documentation should be written and whether the difficulty is suitable for the students.
+  \item \textbf{Design.} After analysis, the teaching assistants should make appropriate frameworks, make sure that they can be started successfully, the interfaces are clearly specified and finally, place the codes on the Huawei Cloud platform.
+  \item \textbf{Implementation.} The students should follow the instructions of the teaching assistants and implement the concrete methods. Here specifically, we need only to modify a String and a port number.
+  \item \textbf{Maintenance.} Here this version of the Lab requires no maintenance after submission.
+\end{enumerate}
 \chapter{Steps of accomplishing this Lab}
 \section{Git operations}
+\subsection{Log in}
+First of all, we should log in to the Classroom platform at \url{classroom.devcloud.huaweicloud.com/}, log in via \emph{IAM Log in} with the assigned account name and set password. Then we can select the homework section to enter the homework in the software engineering class.
+\subsection{DevCloud console}
+Then we need to select the Lab1 in the homework list, create a Dev Cloud project from the teacher's template. After waiting for the system to finish creating the project, we can enter the Dev Cloud console. 
+\subsection{Code Management}
+\subsubsection{Code Repository}
+Then we can select the code management section to view the repository for this Lab. In order to clone the code from the remote repository to the local machine, we need to select the \emph{HTTPS} visiting method and copy the address of the repository.
+\subsubsection{Clone the repository}
+Enter the following code in the local terminal, followed by the account name and password to clone the repository to the local machine. 
+\begin{lstlisting}[language=bash]
+git clone https://codehub.devcloud.huaweicloud.com/2019rjgc_Lab1_xzstudent00300001/Lab1.git
+\end{lstlisting}
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{Figures/Cloned}
+  \caption{Clone the repository to the local machine}\label{1}
+\end{figure}
+After cloning the repository without specifying the path to save the contents, we will get the downloaded files in the user folder by default. The cloned files are like the figure shown in (Figure \ref{1})
+\subsubsection{Modify the source code}
+There are two places that we need to modify the source code. In the file \emph{\textbackslash src\textbackslash main\textbackslash java\textbackslash fudan\textbackslash se\textbackslash lab1\textbackslash Lab1Application.java}, I need to modify the String to \emph{``Hello, Name: Wang Chen, Id: 16307110064''}; and in the file
 \section{Spring Boot framework construction}
+
 \section{Executions on the Spring Boot framework}
-\chapter{Significance of different parts of the lab}
+
 \chapter{Conclusion}
 \end{document} 
